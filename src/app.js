@@ -1,5 +1,4 @@
-//proxy wont run outside the repo
-import _ from 'lodash'
+var _ = require('lodash');
 import fs from 'fs';
 
 //we need a path
