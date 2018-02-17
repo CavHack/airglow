@@ -92,11 +92,16 @@ class App extends React.Component {
   }
 
   refreshLogs() {
-    if(this.mounted)
+    if(this.mounted){
     this.setState( { stats: ClusterStore.getLogs() });
 
 
   }
+}
+
+handleResize() {
+  let widthCurrent = window.watchMedia('(min-width: 1024px)').matches;
+
 }
 
 componentWillUnMount() {

@@ -1,29 +1,8 @@
 import React, { PropTypes } from 'react';
-import { Card, CardTitle } from 'material=ui';
+import { Card, CardTitle } from 'material-ui';
 import _ from 'lodash';
 
 
-/*
-
-import {
-
-  Corner,
-  createBalancedTreeFromLeaves,
-  getLeaves,
-  getNodePath,
-  getOtherDirection,
-  getPathToCorner,
-  Mosaic,
-  MosaicDirection,
-  MosaicNode,
-  MosaicParent,
-  MosaicWindow,
-  MosaicZeroState,
-  updateTree,
-
-} from '../src/index';
-
-*/
 
 class MosaicBox extends React.component {
 
@@ -47,10 +26,10 @@ class MosaicBox extends React.component {
   };
 
   constructor(props) {
-    super(props); //self-reference loop n1
+    super(props);
   }
 
-  //styling goes here
+
   getStyles() {
     return {
       root: {
@@ -64,6 +43,41 @@ class MosaicBox extends React.component {
     };
   }
 
-  //get columns.
+
+  let xs = this.props.xsColSize;
+  let sm = this.props.smColSize;
+  let md = this.props.mdColSize;
+  let lg = this.props.lgColSize;
+
+  let cols = 'col-xs-' + xs;
+  if (sm) {
+    cols = cols + 'col-sm-' + sm;
+  }
+  if(md) {
+    cols = cols + 'col-md-' + md;
+  }
+
+  if(lg) {
+    cols = cols + 'col-lg-' + lg;
+  }
+
+  return cols;
 
 }
+
+render() {
+  <div className={this.getCols()}>
+    <div className="box">
+      <Card Style={styles.root}>
+        <Card Title subtitle={this.props.title} titleColor={styles.card.titleColor} subtitleColor={styles.card.subtitleColor} />
+        {this.props.children}
+      </Card>
+    </div>
+  </div>
+  };
+
+}
+
+}
+
+export default mosaicBox;

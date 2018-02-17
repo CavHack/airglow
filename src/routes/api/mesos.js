@@ -2,6 +2,8 @@ import request from 'superagent ';
 
 let config = '../../config/config');
 
+var mesos = {
+
 //define a mesos object
   baseUrl: config.mesosEndpoint,
 
@@ -15,21 +17,26 @@ let config = '../../config/config');
 
   getState(callback) {
 
-    var IOTA = require('../lib/iota');
+    let url = this.baseUrl + '/master/state.json';
+    request
+    .get(url)
+    .end(callback);
+  },
 
-    var iota = new IOTA({
-      'host' : 'http://localhost',
-      'port': 14700
-    });
+  getSlaves(callback) {
+    let url = this.baseUrl + '/master/slaves';
+    request
+    .get(url)
+    .end(callback);
+  },
 
-    //Quantum Co-signer 1
-    var digestOne = iota.multisig.getDigest('ABCDFG', 0 , 3);
 
-    //Second Quantum co-signer gets his share of the distribution
-    var digestTwo = iota.multisig.getDigest('FDSAG', 0, 3);
+ getLogs(callback) {
+   let url = this.baseUrl + '/files/read.json?path=/master/log&offset=-1';
+   request
+   .get(url)
+   .end(callback);
+ },
+};
 
-    //var Address
-    //Build the address
-    var address = new Address();
-
-  };
+module.exports = mesos

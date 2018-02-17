@@ -1,4 +1,5 @@
 import request from 'superagent';
+import ClusterStore from '../../stores/ClusterStore';
 
 var IOTA = require('../lib/iota');
 
@@ -35,7 +36,7 @@ propagateNewMetrics() {
 
 
 
-}
+    }
 
 },
 
@@ -61,10 +62,37 @@ propagateNewLogs() {
       });
 
 
-
-
-
   });
-
-
 },
+
+
+
+propagateNewState() {
+  //Get the state
+  mesos.getState(function(err, response) {
+    if(err) {
+      console.log(err);
+      return;
+    }
+
+    ClusterStore.stateReceived(response.body);
+  });
+},
+
+propagateMesosData() {
+  let config = require('../../config/config');
+  this.propagateNewMetrics();
+  this.propagateNewState();
+  this.propagateNewLogs();
+
+  //Get metrics and state on interval
+  setInterval(function() {
+    mesosFluxPropagator.propagateNewMetrics();
+    mesosFluxPropagator.propagateNewState();
+    propagateMesosData.propagateNewLogs();
+
+    }, config.updateInterval);
+  }
+};
+
+module.exports = mesosFluxPropagator
