@@ -1,14 +1,11 @@
 import request from 'superagent';
 import ClusterStore from '../../stores/ClusterStore';
 
-var IOTA = require('../lib/iota');
 
-//import ClusterStore from '../../stores/ClusterStore';
 
 import mesos from './mesos'
 
-//Multisignature
-var Address = iota.multisig.address;
+
 
 let mesosFluxPropagator = {
 
@@ -24,21 +21,8 @@ propagateNewMetrics() {
     }
     ClusterStore.metricsReceived(response.body);
   });
-
-    var address = new Address()
-
-      //absorb
-      .absorb(digestOne)
-
-      .absorb(digestTwo)
-
-      .finalize();
-
-
-
-    }
-
 },
+
 
 propagateNewLogs() {
 

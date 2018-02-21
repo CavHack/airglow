@@ -1,6 +1,6 @@
 import request from 'superagent ';
 
-let config = '../../config/config');
+let config = '../../config/config';
 
 var mesos = {
 

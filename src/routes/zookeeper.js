@@ -56,7 +56,41 @@ module.exports = function(app) {
 
       }));
 
+      app.get('*', function(req, res, next) {
 
+        try {
+          let data = { title: '', 
+                      description: '',
+                      css: '',
+                      body: ''
+
+          };
+        //Array of styles
+          let css = [];
+
+          //Run the router query
+          Router.run(routes, req.url, function(Handler) {
+            let application = (<Handler
+              context={{
+                onInsertCss: value => css.push(value),
+                onSetTitle: value => data.title = value,
+                onSetMeta: (key, value) => data[key] = value
+              }} />
+          )
+        };
+
+        data.body = React.renderToString(application);
+        data.css = css.join('');
+        let html = template(data);
+        res.send(html);
+
+
+      });
+} catch (err) {
+  next(err);
+}
+});
+}
 
     function listChildren(client, path) {
       //Promise = callback
@@ -82,17 +116,25 @@ module.exports = function(app) {
           },
 
           function (error, children, stat) {
+            if (error) {
+              console.log(
+                'Failed',
+                path,
+                error
+                );
 
-
+              reject(Error('Broken'));
           }
-        )
 
-      })
+          console.log('Children unsolvable/unrecheable');
+          resolve(children);
+        }
+        );
 
-
-
-
+      });
     }
 
 
-    function (error, children, stat) {
+
+
+  
