@@ -43,6 +43,7 @@ class MosaicBox extends React.component {
     };
   }
 
+getCols() {
 
   let xs = this.props.xsColSize;
   let sm = this.props.smColSize;
@@ -66,6 +67,10 @@ class MosaicBox extends React.component {
 }
 
 render() {
+
+  let styles = _.merge(this.getStyles(), this.props.styles);
+
+  return(
   <div className={this.getCols()}>
     <div className="box">
       <Card Style={styles.root}>
@@ -74,10 +79,10 @@ render() {
       </Card>
     </div>
   </div>
-  };
+  );
 
 }
 
 }
 
-export default mosaicBox;
+export default MosaicBox;

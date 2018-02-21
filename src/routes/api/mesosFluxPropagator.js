@@ -42,7 +42,7 @@ propagateNewLogs() {
           console.log(err);
           return;
         }
-        ClusterStore.logsReceiver(response.body);
+        ClusterStore.logsReceived(response.body);
       });
 
 

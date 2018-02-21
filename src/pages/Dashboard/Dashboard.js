@@ -59,3 +59,29 @@ class Dashboard extends React.Component {
       {name: 'Disconnected', count: stats.slavesDisconnected, color: 'red'}
     ]);
   }
+
+  render() {
+
+      let title = "Dashboard";
+      this.context=onSetTitle(title);
+      return (
+
+          <div>
+          <PageTitle title={title} />
+            <div className="row">
+              <MosaicBox title="CPU Usage">
+              <Donut title="Total CPUs" data={this.cpuStats()}/>
+          
+              </MosaicBox>
+          </div>
+
+        )
+
+
+
+  }
+
+
+
+
+
