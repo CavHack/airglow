@@ -87,7 +87,7 @@ class MosaicTable extends React.Component {
     }
     	interval = Math.floor(seconds / 60);
     	if (interval > 1) {
-     	 return interval + ' minutes';
+     	 retur(interval + ' minutes';
     }
     	return Math.floor(seconds) + ' seconds';
   }

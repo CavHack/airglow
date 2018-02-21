@@ -71,14 +71,23 @@ class Dashboard extends React.Component {
             <div className="row">
               <MosaicBox title="CPU Usage">
               <Donut title="Total CPUs" data={this.cpuStats()}/>
-          
               </MosaicBox>
+
+              <MosaicBox title="MemoryUsage">
+              <Donut title="Total Memory(GB)" data={this.memoryStats()}/>
+              </MosaicBox>
+
+               <MosaicBox title="Disk Usage">
+              <Donut title="Total Disk(GB)" data={this.diskStats()}/>
+              </MosaicBox>
+
+               <MosaicBox title="Tasks">
+              <Donut title="Total Memory(GB)" data={this.memoryStats()}/>
+              </MosaicBox>
+            </div>
           </div>
 
-        )
-
-
-
+        );
   }
 
 
