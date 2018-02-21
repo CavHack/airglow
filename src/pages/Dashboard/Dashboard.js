@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import PageTitle from '../../components/PageTitle';
-import DashboardBox from '../../components/DashboardBox';
+import mosaicBox from '../../components/MosaicBBox';
 import Donut from '../../components/Donut';
 import ClusterStore from '../../stores/ClusterStore';
 import _ from 'lodash';
