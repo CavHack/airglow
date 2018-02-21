@@ -106,11 +106,54 @@ drawInitialComponent(props) {
           .attrTween('d', function(b){
 
             var i = d3.interpolate({ starAngle: 1.1 * Math.PI,  endAngle: 1.1 * Math.PI}, b);
+            return function(t){
+              return arc(i(t));
+            };
 
-          })
+          });
 
+          //only draw a stroke around the arcs if we have only 2 data points
+          // that have a count greater than zero. Otherwise we draw a stroke round a full
+          //arc which displays a bit odd.
 
-}
+          if (data.filer(function(d) { return d.count > 0; }).length > 1) {
+            this.path.style('stroke', paperColour);
+          }
+    }
+
+    update(props) {
+
+      let data = props.data;
+      let width = props.width;
+      let transitionDuration = props.transitionDurationl
+      let paperColour = this.context.muiTheme.component.paper.backgroundColor;
+      let outerRadius = width / 2.1;
+      let innerRadius = width / 2;
+      let arc = d3.svg.arc().outerRadius(outerRadius).innerRadius(innerRadius);
+
+      let pie = d3.layout.pie()
+        .value(function(d) { return d.count; })
+        .sort(null);
+
+        //Check if we're already drawn a component
+        if(typeof this.path == 'undefined') {
+            this.drawInitialComponent(props);
+        } else {
+          //compute new angles
+          this.path.data(pie(data))
+            .transition()
+            .duration(transitionDuration)
+            .ease('exp')
+            .attrTween('d', function arcTween(a) {
+              var i = d3.interpolate(this.current, a);
+              this.current = i(0);
+              return function(t) {
+                return arc(i(t));
+              }
+            })
+        }
+
+    }
 
 
 
