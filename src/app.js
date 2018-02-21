@@ -28,14 +28,17 @@ function run() {
     fluxPropagator.propagateMesosData();
 
     window.React = React;
-    Router.run(routes, Router.hasHistory, function(Handler, state) {
+    Router.run(routes, Router.hasHistory, 
+
+      function(Handler, state){
 
       React.render(<handleResize
       context={{
         onSetTitle: value => document.title = value,
         onSetMeta
       }}
-      {...state}/>, document.getElementById('app'));
+      {...state}/>, 
+      document.getElementById('app'));
 
     });
 
