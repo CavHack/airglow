@@ -1,18 +1,24 @@
 import React from 'react';
+import { Route, DefaultRoute, NotFoundRoute } from 'react-router';
 
-
-  import {
-
-  Route, // Our default slot
-  DefaultRoute,  // Route = DefaultRoute (n1)
-  NotFoundRoute 
-
-  } from 'react-router';
-
-//import NotFoundRoute
-//import DashboardNode
-import Nodes from /* Node central */
+import NotFound from '../pages/NotFound';
+import Nodes from '../pages/Nodes';
+import Tasks from '../pages/Tasks';
+import Frameworks from '../pages/Frameworks';
+import Logs from '../pages/Logs';
+import App from '../components/App';
 
 
 
-//export someLibraryhere {}
+export default (
+
+	<Route name = "app" path="/" handler= { App}>
+		<Route name="nodes" path="nodes" handler={ Nodes} />
+		<Route name="tasks" path= "tasks" handler={Tasks} />
+		<Route name="frameworks" path="frameworks" handler={ Frameworks }/>
+    	<Route name="logs" path="logs" handler={ Logs }/>
+    	<DefaultRoute handler={ Dashboard } />
+    	<NotFoundRoute handler={ NotFound } />
+    </Route>
+
+	);
