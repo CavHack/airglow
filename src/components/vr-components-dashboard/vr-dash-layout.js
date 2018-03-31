@@ -28,12 +28,40 @@ class DashboardLayout extends React.Component {
     //We want to have an animation that translates
     //the dashboard from 2D to 3D
     //Stereographically
+    Animated.sequence([
+      Animated.parallel([
+        Animated.timing(
+          this.state.slideLeft,
+          {
+            toValue:0,
+            duration: 2000,
+            easing: Easing.ease
+          }
+        ),
+        Animated.timing(
+          this.state.fadeIn,
+          {
+            toValue:1,
+            duration: 2000,
+            easing: Easing.ease
+          }
+
+        )
+      ])
+    ]).start();
   }
 
   //Input cipher
   updateStage(input) {
     if (this.state.showButton == false) {
+      this.setState({showButton: true});
 
+    }
+
+
+    switch (input) {
+      case 1:
+        this.setState(borderWidths:)
     }
   }
 }
