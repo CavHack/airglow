@@ -20,6 +20,11 @@
     "npm": ">= 2.14"
   },
   "dependencies": {
+    "ovrui" : "~1.2.0",
+    "three" : "^0.80.1",
+    "react-vr" : "~1.2.0",
+    "react-vr-web": "~1.2.0",
+    "react-native-axios" : "^0.17.1",
     "node-zookeeper-client": "0.2.2",
     "array-find": "~1.0.0",
     "babel": "5.8.23",
@@ -86,6 +91,8 @@
     "webpack": "~1.12.2"
   },
   "jest": {
+
+    "preset": "react-vr",
     "rootDir": "./src",
     "collectCoverage": true,
     "scriptPreprocessor": "../node_modules/babel-jest",
