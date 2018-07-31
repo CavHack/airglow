@@ -229,7 +229,7 @@ module.exports = function(app) {
               continue;
           }
           var smoothed = SMA(data, w, 1);
-          metrics = new Metrics(smoothed);
+          metrics = new SolitonMetrics(smoothed);
           var roughness = metrics.roughness();
           if (metrics.kurtosis() >= originalKurt) {
               if (roughness < minObj) {

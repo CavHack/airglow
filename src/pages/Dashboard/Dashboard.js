@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import PageTitle from '../../components/PageTitle';
-import mosaicBox from '../../components/MosaicBBox';
+import MosaicBox from '../../components/MosaicBBox';
 import Donut from '../../components/Donut';
 import ClusterStore from '../../stores/ClusterStore';
 import _ from 'lodash';
@@ -89,8 +89,3 @@ class Dashboard extends React.Component {
 
         );
   }
-
-
-
-
-
