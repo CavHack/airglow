@@ -53,11 +53,11 @@ render() {
   let styles =  this.getStyles();
 
   return (
-    <li style = >
-  )
+      <li style={styles.root}>
+        <img style={styles.img}/><span style={styles.title}>{title}</span> <span>{used} / {total}</span>
+      </li>
+    );
+  }
 }
 
-
-
-
-}
+export default LegendItem;
