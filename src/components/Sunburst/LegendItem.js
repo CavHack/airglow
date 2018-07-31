@@ -44,7 +44,17 @@ class LegendItem extends React.component {
 render() {
   let props = this.props;
   let title = props.title;
-  letn used = props.used;
+  let acf = props.acf;
+  let peaks = props.peaks;
+  let windowSize = props.windowSize;
+  let used = props.used;
+  let total = props.total;
+  let tail = props.tail;
+  let styles =  this.getStyles();
+
+  return (
+    <li style = >
+  )
 }
 
 
