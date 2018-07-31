@@ -22,13 +22,28 @@ class Tasks extends React.Component {
 				fontSize: 24,
 				paddingTop: 16,
 				marginBottom: 12,
-				fontWeight: 
-			}
-		}
+				fontWeight: 400,
+			},
+		};
+
+		let title = 'Tasks';
+
+		this.context.onSetTitle(title);
+		return (
+			<div>
+				<PageTitle={title}/>
+					<Tabs>
+						<Tab label="Mosaic">
+			 				<div>
+			 					<TaskTable tasks={this.props.tasks}/>
+							</div>
+						</Tab>
+					</Tabs>
+				</div>
+
+		);
 	}
-
-
-
 
 }
 
+export default Tasks;
